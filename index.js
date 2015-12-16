@@ -32,7 +32,7 @@ module.exports = function () {
                 response.metadata = metdata;
             }
 
-            response.data = data;
+            response.result = data;
 
             res.json(response);
         };
