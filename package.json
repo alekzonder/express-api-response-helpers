@@ -1,0 +1,16 @@
+{
+  "name": "express-api-response-helpers",
+  "version": "0.1.0",
+  "description": "express api response helpers",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alekzonder/express-api-response-helpers.git"
+  },
+  "author": "alekzonder <alekzonder@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alekzonder/express-api-response-helpers/issues"
+  },
+  "homepage": "https://github.com/alekzonder/express-api-response-helpers"
+}

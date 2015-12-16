@@ -1,0 +1,90 @@
+# express-response-helper
+
+Express middleware adds response helper functions  
+
+See examples below
+
+# usage
+
+```js
+var app = require('express')();
+var responseHelpers = require('express-api-response-helpers');
+
+app.use(responseHelpers());
+
+app.get('/api/test', function (req, res) {
+
+    some_db_or_anything_else_request(function (err, data) {
+
+        if (err) {
+            res.serverError();
+            return;
+        }
+
+        res.result(data);
+
+    });
+
+});
+```
+
+# helpers
+
+## res.serverError()
+
+send http status:  500 Server Error
+
+```
+{
+    "error": {
+        "message": "Server Error",
+        "code": "server_error"
+    }
+}
+```
+
+
+## res.notFound(message, code)
+
+send http status: 404 Not Found
+
+```
+{
+    "error": {
+        "message": "<message>",
+        "code": "<code>"
+    }
+}
+```
+
+
+## res.result(data, metadata)
+
+send http status: 200 OK
+
+```
+{
+    "metadata": <metdata>,
+    "result": <data>
+}
+```
+
+## res.badRequest(error)
+
+take error Error object or object as argument with props:
+
+- message
+- code
+- list - list of errors
+
+send http status: 400 Bad Request
+
+```
+{
+    "error": {
+        "message": "<error.message>",
+        "code": "<error.code>",
+        "list": <error.list>
+    }
+}
+```
