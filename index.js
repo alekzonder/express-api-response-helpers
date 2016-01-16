@@ -29,7 +29,7 @@ module.exports = function () {
             var response = {};
 
             if (metadata) {
-                response.metadata = metdata;
+                response.metadata = metadata;
             }
 
             response.result = data;
