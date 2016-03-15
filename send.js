@@ -2,7 +2,7 @@ module.exports = function() {
 
     return function(req, res) {
 
-        if (!res._context) {
+        if (!res.ctx) {
             res.status(500).json({
                 error: {
                     message: 'Server Error',
@@ -11,12 +11,12 @@ module.exports = function() {
             });
         }
 
-        if (res._context.status) {
-            res.status(res._context.status);
+        if (res.ctx.status) {
+            res.status(res.ctx.status);
         }
 
-        if (res._context.body) {
-            res.json(res._context.body);
+        if (res.ctx.body) {
+            res.json(res.ctx.body);
         } else {
             res.json();
         }

@@ -4,7 +4,7 @@ module.exports = function() {
 
         res.serverError = function() {
 
-            res._context = {
+            res.ctx = {
                 status: 500,
                 body: {
                     error: {
@@ -14,11 +14,15 @@ module.exports = function() {
                 }
             };
 
+            if (res.ctxDone) {
+                res.ctxDone();
+            }
+
         };
 
         res.notFound = function(message, code) {
 
-            res._context = {
+            res.ctx = {
                 status: 404,
                 body: {
                     error: {
@@ -27,6 +31,10 @@ module.exports = function() {
                     }
                 }
             };
+
+            if (res.ctxDone) {
+                res.ctxDone();
+            }
 
         };
 
@@ -40,10 +48,14 @@ module.exports = function() {
 
             response.result = data;
 
-            res._context = {
+            res.ctx = {
                 status: 200,
                 body: response
             };
+
+            if (res.ctxDone) {
+                res.ctxDone();
+            }
 
         };
 
@@ -65,7 +77,7 @@ module.exports = function() {
                 list = error.list;
             }
 
-            res._context = {
+            res.ctx = {
                 status: 400,
                 body: {
                     error: {
@@ -75,6 +87,10 @@ module.exports = function() {
                     }
                 }
             };
+
+            if (res.ctxDone) {
+                res.ctxDone();
+            }
         };
 
         next();

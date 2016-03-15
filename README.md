@@ -45,7 +45,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(function (req, res, next) {
-    res._context.body.debug = 'debug';
+    res.ctx.body.debug = 'debug';
     next();
 });
 

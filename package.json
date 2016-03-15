@@ -1,6 +1,6 @@
 {
   "name": "express-api-response-helpers",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "express api response helpers",
   "main": "index.js",
   "files": [
