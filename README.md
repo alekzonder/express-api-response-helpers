@@ -6,9 +6,11 @@ See examples below
 
 # usage
 
+## use "functions" module (send response immediately)
+
 ```js
 var app = require('express')();
-var responseHelpers = require('express-api-response-helpers');
+var responseHelpers = require('express-api-response-helpers/functions');
 
 app.use(responseHelpers());
 
@@ -26,6 +28,33 @@ app.get('/api/test', function (req, res) {
     });
 
 });
+```
+
+## use context and send modules (if need postprocessing)
+
+```js
+var express = require('express');
+
+var app = express();
+
+app.use(require('express-api-response-helpers/context')());
+
+app.use(function (req, res, next) {
+    res.result('test');
+    next();
+});
+
+app.use(function (req, res, next) {
+    res._context.body.debug = 'debug';
+    next();
+});
+
+app.use(require('express-api-response-helpers/send')());
+
+app.listen(8888);
+
+})
+})
 ```
 
 # helpers
